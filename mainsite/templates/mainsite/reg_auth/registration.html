@@ -1,3 +1,16 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-
+<h1>REG</h1>
+<form method="POST" action="">
+    {% csrf_token %}
+    {{form.username.label}}
+    {{form.username}}
+    {{form.password1.label}}
+    {{form.password1}}
+    {{form.password2.label}}
+    {{form.password2}}
+    <input type="submit" name="Create User">
+</form>
+<a href="{% url 'login' %}">
+    LOGIN
+</a>
 {% endblock %}

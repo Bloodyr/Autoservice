@@ -1,3 +1,14 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-
+<h1>LOGIN</h1>
+{% csrf_token %}
+<form method='POST' action=''>
+<input type='text' name="username">
+<input type='text' name="password">
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn login_btn" type="submit" value="Login">
+				   			</div>
+</form>
+<a href="{% url 'registration' %}">
+    REG
+</a>
 {% endblock %}
