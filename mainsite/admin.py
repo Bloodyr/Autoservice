@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Client, Auto, ClientAuto, Part, Mesurable, PartsPrice, Jobtype, JobPrice, Order
+from .models import Auto, ClientAuto, Part, Mesurable, PartsPrice, Jobtype, JobPrice, Order
 
 
-admin.site.register(Client)
+# admin.site.register(Client)
 admin.site.register(Auto)
 admin.site.register(ClientAuto)
 admin.site.register(Part)

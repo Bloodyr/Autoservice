@@ -1,3 +1,10 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
+Информация о заказе
+{% for order in orders %}
+    <h1><a href="{% url 'order_detail_page' pk=order.pk %}">   
+        Дата {{order.order_date}}
+        Номер {{order.id}}
+    </a></h1>
 
+{% endfor %}
 {% endblock %}

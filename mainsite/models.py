@@ -2,16 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Client(models.Model):
-    "Модель описывает профиль клиента, имя, фамилию, и никнейм"
-    user =  models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    username = models.CharField(max_length=99)
-    def __str__(self) -> str:
-        return self.username
+# class Client(models.Model):
+#     "Модель описывает профиль клиента, имя, фамилию, и никнейм"
+#     user =  models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Пользователь')
 
-    class Meta:
-        verbose_name = "Клиент"
-        verbose_name_plural = "Клиенты"
+#     username = models.CharField(max_length=99)
+#     def __str__(self) -> str:
+#         return self.username
+#     class Meta:
+#         verbose_name = "Клиент"
+#         verbose_name_plural = "Клиенты"
         
 
 
@@ -31,7 +31,7 @@ class Auto(models.Model):
 
 class ClientAuto(models.Model):
     "Модель связывает машины которые есть у пользователя"
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name="Клиент")
+    client = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Клиент")
     auto = models.ForeignKey(Auto, on_delete=models.CASCADE, verbose_name="Автомобиль")
 
     def __str__(self) -> str:
@@ -119,7 +119,7 @@ class Order(models.Model):
         ("Размещён","Размещён"),
     )
     order_date = models.DateField()
-    client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name="Клиент")
+    client = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Клиент")
     job = models.ForeignKey(JobPrice, on_delete=models.CASCADE, verbose_name="Работа")
     parts_price = models.ForeignKey(PartsPrice, on_delete=models.CASCADE, verbose_name="Цена детали")
     status = models.CharField(
@@ -127,12 +127,14 @@ class Order(models.Model):
         choices=status_choice,
         verbose_name="Статус",
     )
+    car = models.ForeignKey(ClientAuto, on_delete=models.CASCADE, verbose_name='Машина клиента')
 
     def __str__(self) -> str:
         return "Заказ клиента {}|Статус {}| Работа {}|Деталь {}".format(
             self.client.username, 
-            self.status, 
-            self.job.job.job_name)
+            self.status,
+            self.job.job.job_name,
+            self.parts_price.part)
 
     class Meta:
         verbose_name = "Заказ"

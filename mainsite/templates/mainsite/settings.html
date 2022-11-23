@@ -1,4 +1,10 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-
 Настройки
+{{user.username}}
+<form method="POST" action="">
+{{form}}
+<div class="d-flex justify-content-center mt-3 settings_container">
+    <input class="btn settings-btn" type="submit" value="settings">
+</div> 
+</form>
 {% endblock %}
