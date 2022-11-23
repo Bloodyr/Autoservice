@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import Auto, Order 
+from .models import Auto, Order, Part, PartsPrice
 from .forms import AutoForm, AdditionalUserForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -94,3 +94,23 @@ def order_detail_page(request, pk):
     post = get_object_or_404(Order, pk=pk)
     context = {'post': post, 'profile': profile}
     return render(request, 'mainsite/order_info/order_check.html', context)
+
+
+def part_list_page(request):
+    parts = Part.objects.all()
+    context = {'parts':parts}
+    return render(request,'mainsite/parts/part_list.html', context)
+
+
+def part_detail_page(request, pk):
+    part_type = get_object_or_404(Part,pk=pk)
+    parts = PartsPrice.objects.filter(part=part_type)
+    context = {'parts':parts}
+    return render(request, 'mainsite/parts/part_detail.html', context)
+
+
+def part_check_page(request, pk):
+    part = get_object_or_404(PartsPrice,pk=pk)
+    print(part.amount)
+    context = {'part':part}
+    return render(request, 'mainsite/parts/part_check.html', context)

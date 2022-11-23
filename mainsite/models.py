@@ -71,6 +71,7 @@ class PartsPrice(models.Model):
     part = models.ForeignKey(Part, on_delete=models.CASCADE, verbose_name="Деталь")
     mesurable = models.ForeignKey(Mesurable, on_delete=models.CASCADE, verbose_name="Измерение")
     amount = models.IntegerField(default=0,verbose_name="Колличество")
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self) -> str:
         return "Деталь |{}|-Измерение |{}|-Колличество {}|".format(
