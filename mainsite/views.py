@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .models import Auto
+from .forms import AutoForm
 
 
 def home_page(request):
@@ -46,3 +48,25 @@ def login_page(request):
 def logoutUser(request):
     logout(request)
     return redirect('home_page')
+
+@csrf_exempt
+def cars_page(request):
+    form = AutoForm()
+    if request.method == 'POST':
+        form = AutoForm(request.POST)
+        if form.is_valid :
+            form.save()
+            return redirect('cars_details_page')
+    context = {'form':form}
+    return render(request, 'mainsite/cars/cars.html', context)
+
+
+def cars_details_page(request):
+    autos = Auto.objects.all()
+    context = {'autos':autos}
+    return render(request, 'mainsite/cars/cars_detail.html', context)
+
+
+def settings_page(request):
+    context = {}
+    return render(request, 'mainsite/settings.html', context)

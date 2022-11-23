@@ -1,0 +1,13 @@
+{% extends 'mainsite/base.html' %} {% block content %} {% load static %}
+машины
+<form method='POST' action=''>
+    {% csrf_token %}
+{{form}}
+<a href="{% url 'cars_details_page' %}">
+    Список
+</a>
+<div class="d-flex justify-content-center mt-3 login_container">
+    <input class="btn login_btn" type="submit" value="Добавить">
+</div>
+</form>
+{% endblock %}

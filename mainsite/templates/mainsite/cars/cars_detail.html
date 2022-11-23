@@ -1,0 +1,8 @@
+{% extends 'mainsite/base.html' %} {% block content %} {% load static %}
+Список
+{% for auto in autos %}
+    {{auto.brand}}
+    {{auto.model}}
+    {{auto.gov_number}}
+{% endfor %}
+{% endblock %}

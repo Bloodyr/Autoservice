@@ -1,2 +1,25 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
+<h1>
+    Test
+</h1>
+
+<a href="{% url 'cars_page' %}">
+    машины
+</a>
+<a href="{% url 'settings_page' %}">
+    Настройки
+</a>
+<a href="{% url 'login' %}">
+    Информация 
+</a>
+<a href="{% url 'login' %}">
+    Список услуг
+</a>
+<a href="{% url 'login' %}">
+    Оформить заказ
+</a>
+<a href="{% url 'login' %}">
+    Заказать деталь
+</a>
 {% endblock %}
+
