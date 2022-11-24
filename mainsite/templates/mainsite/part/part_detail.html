@@ -1,0 +1,12 @@
+{% extends 'mainsite/base.html' %} {% block content %} {% load static %}
+{% for part in parts %}
+
+{% if part.image %}<img src="{{ part.image.url}}" alt="connect" >{% endif %} 
+<h1>
+    <a href="{% url 'part_check_page' pk=part.pk %}">   
+{{part.part.part_name}}
+{{part.amount}}
+    </a>
+</h1>
+{%endfor%}
+{% endblock %}  
