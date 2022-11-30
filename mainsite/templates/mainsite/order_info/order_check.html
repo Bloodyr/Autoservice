@@ -1,6 +1,28 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-TEST
+<div class="order_check">
+
+<h2>Информация о заказе</h2>
 <p>№{{order.id}} {{order.order_date}}</p>
+<div class="order_check_jobs">
+{%for job in order.job_list.all %}
+    <div class="job_check">
+        <div class="job_check_name">
+            <p>{{job.job_name}}</p>
+            <p>{{order.car.auto.brand}}</p>
+            <p>{{order.car.auto.model}}</p>
+        </div>
+        <div class="job_check_price">
+            <p>{{job.price}} руб.</p>
 
-
+        </div>     
+    </div>
+{%endfor%}
+</div>
+<div class="order_summary">
+    <p>Итог {{bill.total}}руб.</p>
+    <a href="{% url 'order_pay' total=total pk=order.pk %}">
+        <img src='{% static "mainsite/img/wallet-green.svg" %}' alt="" width="28px" >
+    </a>
+</div>
+</div>
 {% endblock %}

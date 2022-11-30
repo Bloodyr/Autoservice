@@ -16,5 +16,7 @@ urlpatterns = [
     path('part_detail/<int:pk>/', views.part_detail_page, name='part_detail_page'),
     path('part_detail/part_check_page/<int:pk>/', views.part_check_page, name='part_check_page'), 
     path('job_list_page/', views.job_list_page, name='job_list_page'),
-    path('job_list_page/details/<int:pk>/', views.job_details, name='job_details')
+    path('job_list_page/details/<int:pk>/', views.job_details, name='job_details'),
+    path('creation_order_page/', views.creation_order_page, name='creation_order_page'),
+    path('order_pay/<int:total><int:pk>/', views.order_pay, name='order_pay'),
 ]

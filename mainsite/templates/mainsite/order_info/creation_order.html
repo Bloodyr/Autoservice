@@ -1,0 +1,10 @@
+{% extends 'mainsite/base.html' %} {% block content %} {% load static %}
+
+<div class="creation_order_page">
+
+    {% for job in jobs%}
+    <input type="checkbox" value="{{job.job_name}}"> {{job.job_name}}
+    {%endfor%}
+</div>
+
+{% endblock %}

@@ -116,16 +116,18 @@ class JobPrice(models.Model):
         verbose_name_plural = "Цена за работы"
 
 
+
 class Order(models.Model):
     status_choice = (
-        ("В работе","В работе"),
-        ("Ожидает оплаты","Ожидает оплаты"),
-        ("Размещён","Размещён"),
+        ("0","В работе"),
+        ("1","Ожидает оплаты"),
+        ("2","Размещён"),
     )
     order_date = models.DateField()
     client = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Клиент")
-    job = models.ForeignKey(JobPrice, on_delete=models.CASCADE, verbose_name="Работа")
-    parts_price = models.ForeignKey(PartsPrice, on_delete=models.CASCADE, verbose_name="Цена детали")
+    job_list = models.ManyToManyField(Jobtype)
+    # job = models.ForeignKey(JobPrice, on_delete=models.CASCADE, verbose_name="Работа")
+    # parts_price = models.ForeignKey(PartsPrice, on_delete=models.CASCADE, verbose_name="Цена детали")
     status = models.CharField(
         max_length=15,
         choices=status_choice,
@@ -134,11 +136,10 @@ class Order(models.Model):
     car = models.ForeignKey(ClientAuto, on_delete=models.CASCADE, verbose_name='Машина клиента')
 
     def __str__(self) -> str:
-        return "Заказ клиента {}|Статус {}| Работа {}|Деталь {}".format(
+        return "Заказ клиента {}|Статус {}|".format(
             self.client.username, 
             self.status,
-            self.job.job.job_name,
-            self.parts_price.part)
+            )
 
     class Meta:
         verbose_name = "Заказ"
@@ -155,7 +156,7 @@ class PaymentType(models.Model):
 class Bill(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='Заказ')
     payment_date = models.DateField(blank=True, null=True, verbose_name='Дата оплаты')
-    mesurable = models.IntegerField(verbose_name='Измерение')
+    # mesurable = models.IntegerField(verbose_name='Измерение')
     payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE, verbose_name='Тип оплаты')
     total = models.IntegerField(verbose_name='Сумма')
 

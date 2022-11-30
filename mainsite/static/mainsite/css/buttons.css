@@ -111,3 +111,56 @@
 .part_price h2 {
     text-align: center;
 }
+
+.order_check h2{
+    color: white;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.order_check {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.job_check {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.order_summary {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.job_check_name {
+    font-size: 12px;
+    display: flex;
+}
+
+.job_check_name p{
+    margin-right: 7px;
+}
+
+.order_bill {
+    color: white;
+    padding: 20px;
+}
+
+.order_bill h2 {
+    text-align: center;
+}
+
+.order_name {
+    text-align: center;
+}
+
+.order_sum {
+    display: flex;
+    justify-content: space-between;
+}

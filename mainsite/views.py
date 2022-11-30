@@ -3,10 +3,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import Auto, Order, Part, PartsPrice, JobPrice, Jobtype
+from .models import Auto, Order, Part, PartsPrice, JobPrice, Jobtype, ClientAuto, Bill, PaymentType
 from .forms import AutoForm, AdditionalUserForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+import datetime
 
 
 def home_page(request):
@@ -92,8 +93,28 @@ def order_info_page(request):
 def order_detail_page(request, pk):
     profile = User.objects.get(username=request.user)
     order = get_object_or_404(Order, pk=pk)
-    context = {'order': order, 'profile': profile}
+    payment_type = PaymentType.objects.get(pk=1)
+    total = 0
+    for job in order.job_list.all():
+        total += job.price
+    bill = Bill.objects.get_or_create(order=order, payment_date=datetime.date.today(),payment_type=payment_type ,total=total)
+    context = {
+        'order': order, 
+        'profile': profile,
+        'total': total,
+    }
+
     return render(request, 'mainsite/order_info/order_check.html', context)
+
+
+def order_pay(request, total,pk):
+    order = get_object_or_404(Order, pk=pk)
+    bill = get_object_or_404(Bill,total=total)
+    context = {
+        'order':order,
+        'bill':bill,
+    }
+    return render(request, 'mainsite/order_info/order_pay.html',context)
 
 
 def part_list_page(request):
@@ -125,3 +146,11 @@ def job_details(request, pk):
     job = get_object_or_404(Jobtype, pk=pk)
     context = {'job':job}
     return render(request, 'mainsite/jobs/job_details.html',context)
+    
+
+def creation_order_page(request):
+    jobs = Jobtype.objects.all()
+    # bill = 
+    auto = ClientAuto.objects.get(client=request.user)
+    context = {'jobs': jobs, 'auto':auto}
+    return render(request,'mainsite/order_info/creation_order.html',context)
