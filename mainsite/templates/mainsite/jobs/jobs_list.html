@@ -1,13 +1,16 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-<div class="job_list_page">
 
+<div class="job_list_page">
     <h1>Список услуг</h1>
-    {% for part in parts %}
+    {% for job in jobs %}
         <div class="job_btn">
-            <a href="{% url 'part_detail_page' pk=part.pk %}" >   
-                <p>{{part.part_name}}</p>
+            <a href="{% url 'job_details' pk=job.pk %}" >   
+                <p>{{job.job_name}}</p>
             </a>
         </div>
+
     {%endfor%}
 </div>
+
+
 {% endblock %}

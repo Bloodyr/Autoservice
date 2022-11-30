@@ -1,12 +1,17 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-{% for part in parts %}
-
-{% if part.image %}<img src="{{ part.image.url}}" alt="connect" >{% endif %} 
-<h1>
-    <a href="{% url 'part_check_page' pk=part.pk %}">   
-{{part.part.part_name}}
-{{part.amount}}
-    </a>
-</h1>
-{%endfor%}
+<div class="part_details">
+    <h2>{{part_type.part_name}}</h1>
+    {% for part in parts %}
+    <div class="part_detail_solo">
+        {% if part.image %}<img class="part_detail_img" src="{{ part.image.url}}" alt="connect" >{% endif %} 
+            <a href="{% url 'part_check_page' pk=part.pk %}">   
+                {{part.details}}
+                {{part.amount}}
+            </a>
+        <a href="{% url 'part_check_page' pk=part.pk %}">
+            <img src='{% static "mainsite/img/wallet-green.svg" %}' alt="" width="28px" >
+        </a>
+    </div>
+    {%endfor%}
+</div>
 {% endblock %}  

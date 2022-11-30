@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import Auto, Order, Part, PartsPrice
+from .models import Auto, Order, Part, PartsPrice, JobPrice, Jobtype
 from .forms import AutoForm, AdditionalUserForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -91,26 +91,37 @@ def order_info_page(request):
 
 def order_detail_page(request, pk):
     profile = User.objects.get(username=request.user)
-    post = get_object_or_404(Order, pk=pk)
-    context = {'post': post, 'profile': profile}
+    order = get_object_or_404(Order, pk=pk)
+    context = {'order': order, 'profile': profile}
     return render(request, 'mainsite/order_info/order_check.html', context)
 
 
 def part_list_page(request):
     parts = Part.objects.all()
     context = {'parts':parts}
-    return render(request,'mainsite/parts/part_list.html', context)
+    return render(request,'mainsite/part/part_list.html', context)
 
 
 def part_detail_page(request, pk):
     part_type = get_object_or_404(Part,pk=pk)
     parts = PartsPrice.objects.filter(part=part_type)
-    context = {'parts':parts}
-    return render(request, 'mainsite/parts/part_detail.html', context)
+    context = {'parts':parts, 'part_type': part_type}
+    return render(request, 'mainsite/part/part_detail.html', context)
 
 
 def part_check_page(request, pk):
     part = get_object_or_404(PartsPrice,pk=pk)
-    print(part.amount)
     context = {'part':part}
-    return render(request, 'mainsite/parts/part_check.html', context)
+    return render(request, 'mainsite/part/part_check.html', context)
+
+
+def job_list_page(request):
+    jobs = Jobtype.objects.all()
+    context = {'jobs':jobs}
+    return render(request, 'mainsite/jobs/jobs_list.html',context)
+
+
+def job_details(request, pk):
+    job = get_object_or_404(Jobtype, pk=pk)
+    context = {'job':job}
+    return render(request, 'mainsite/jobs/job_details.html',context)

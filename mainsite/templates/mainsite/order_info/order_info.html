@@ -1,10 +1,18 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-Информация о заказе
-{% for order in orders %}
-    <h1><a href="{% url 'order_detail_page' pk=order.pk %}">   
-        Дата {{order.order_date}}
-        Номер {{order.id}}
-    </a></h1>
+<h2 style="color:white;text-align:center;margin: 15px;">Информация о заказах</h2>
 
+{% for order in orders %}
+    <div class="order">
+
+    <a href="{% url 'order_detail_page' pk=order.pk %}">   
+        <img src='{% static "mainsite/img/envelope.svg" %}' alt="lol" width="30px" >
+    </a>
+    <p>№{{order.id}} {{order.order_date}}</p>
+    <a href="">
+        <img src='{% static "mainsite/img/wallet-green.svg" %}' alt="" width="28px" >
+    </a>
+    </div> 
 {% endfor %}
+
+
 {% endblock %}

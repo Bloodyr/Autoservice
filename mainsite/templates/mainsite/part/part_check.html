@@ -1,3 +1,12 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-Итог = {{part.amount}}
+<div class="part_price">
+    <h2>Оплата</h2>
+    <p>Итог = {{part.amount}} руб.</p>
+    <div>
+        <p>В настоящий момент возможна только оплата наличными, либо перевод на карту</p>
+        <p>CБЕРБАНК - 5467 6700 2474 8017  </p>
+        <p>ВЛАДИСЛАВ Ш</p>
+    </div>
+
+</div>
 {% endblock %}

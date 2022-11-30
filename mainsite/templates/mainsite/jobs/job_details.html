@@ -1,0 +1,12 @@
+{% extends 'mainsite/base.html' %} {% block content %} {% load static %}
+
+<div class="job_details">
+    <h2>{{job.job_name}}</h2>
+
+    <p style="margin-top: 30px;">Стоймость {{job.price}} руб.</p>
+    {% if job.image %}<img src="{{ job.image.url}}" alt="connect" >{% endif %}
+    <p>{{job.description}}</p>
+
+</div>
+
+{% endblock %}

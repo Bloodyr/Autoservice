@@ -72,10 +72,11 @@ class PartsPrice(models.Model):
     mesurable = models.ForeignKey(Mesurable, on_delete=models.CASCADE, verbose_name="Измерение")
     amount = models.IntegerField(default=0,verbose_name="Колличество")
     image = models.ImageField(upload_to='images/', blank=True, null=True)
+    details = models.CharField(max_length=100,blank=True,null=True)
 
     def __str__(self) -> str:
         return "Деталь |{}|-Измерение |{}|-Колличество {}|".format(
-            self.part.part_name,
+            self.details,
             self.mesurable.mesurable_name,
             self.amount)
     
@@ -87,7 +88,9 @@ class PartsPrice(models.Model):
 
 class Jobtype(models.Model):
     job_name = models.CharField(max_length=100,verbose_name="Название работы")
-
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    description = models.TextField(blank=True,null=True)
+    price = models.IntegerField(blank=True,null=True)
     def __str__(self) -> str:
         return self.job_name
 

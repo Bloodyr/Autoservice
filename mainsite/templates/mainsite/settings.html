@@ -1,10 +1,28 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-Настройки
-{{user.username}}
+<div class="settings_page">
+    <h1>Настройки</h1>
 <form method="POST" action="">
-{{form}}
-<div class="d-flex justify-content-center mt-3 settings_container">
-    <input class="btn settings-btn" type="submit" value="settings">
-</div> 
+    <div class="login_field">
+        <p class="settings_label">Логин</p>
+        {{form.username}}
+    </div>
+    <div class="password_field">
+        <div class="password1">
+        <p class="settings_label">Пароль</p>
+        {{form.password1}}
+        </div>
+
+        <div class="password2">
+            <p class="settings_label">Потдверждение пароля</p>
+        {{form.password2}}
+        </div>
+    </div>
+    <div class="login_field">
+        <p class="settings_label">Имя</p>
+        {{form.first_name}}
+    </div>
+    <input class="settings_btn" type="submit" value="settings">
 </form>
+</div>
+
 {% endblock %}

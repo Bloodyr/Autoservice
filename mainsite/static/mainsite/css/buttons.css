@@ -1,0 +1,113 @@
+.settings_btn  {
+    width: 250px;
+
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 63px;
+}
+
+.settings_page {
+    color: white;
+}
+
+.settings_page h1{
+    text-align: center;
+    margin-top: 15px;
+}
+
+.settings_page form{
+    margin-top: 50px;
+}
+ 
+.settings_label {
+    margin-top: 20px;
+}
+
+.order {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.job_list_page {
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+.job_list_page a{
+    text-decoration: none;
+    color: white;
+    margin-top: 9px;
+}
+
+.job_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    background-color: grey;
+    margin-left: 63px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 20px;
+}
+
+.job_details {
+    color: white;
+}
+
+.job_details h2{
+    text-align: center;
+    margin: 15px;
+}
+
+.job_details img{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.part_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.part_detail_img{
+    width: 150px;
+}
+
+.part_detail_solo {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.part_detail_solo a{
+    margin-top: 60px;
+
+}
+
+.part_details h2 {
+    color: white;
+    text-align: center;
+    margin: 15px;
+}
+
+.part_price {
+    color:white;
+    padding: 15px;
+}
+
+.part_price h2 {
+    text-align: center;
+}
