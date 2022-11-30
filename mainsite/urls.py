@@ -18,5 +18,7 @@ urlpatterns = [
     path('job_list_page/', views.job_list_page, name='job_list_page'),
     path('job_list_page/details/<int:pk>/', views.job_details, name='job_details'),
     path('creation_order_page/', views.creation_order_page, name='creation_order_page'),
-    path('order_pay/<int:total><int:pk>/', views.order_pay, name='order_pay'),
+    path('order_pay/<int:total>/<int:pk>/', views.order_pay, name='order_pay'),
+    path('bill_page/',views.bill_page,name='bill_page'),
+    path('recipe/<int:pk>/', views.recipe, name='recipe')
 ]

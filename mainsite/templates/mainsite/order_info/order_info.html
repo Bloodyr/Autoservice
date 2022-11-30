@@ -11,18 +11,18 @@
 
 
     {% if order.status == "0" %}
-    <a href="">
+    <a href="{% url 'recipe' pk=order.pk %}">
         <img src='{% static "mainsite/img/bill.svg" %}' alt="" width="28px" >
     </a>
     <a href="">
         <img src='{% static "mainsite/img/wallet.svg" %}' alt="" width="28px" >
     </a>
     {% elif order.status == "1" %}
-    <a href="">
+    <a href="{% url 'order_detail_page'  pk=order.pk %}"">
         <img src='{% static "mainsite/img/wallet-green.svg" %}' alt="" width="28px" >
     </a>
     {% elif order.status == "2" %}
-    <a href="">
+    <a href="{% url 'order_detail_page' pk=order.pk %}"">
         <img src='{% static "mainsite/img/wallet-green.svg" %}' alt="" width="28px" >
     </a>
     {% endif %}

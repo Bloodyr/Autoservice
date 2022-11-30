@@ -19,7 +19,7 @@
 {%endfor%}
 </div>
 <div class="order_summary">
-    <p>Итог {{bill.total}}руб.</p>
+    <p>Итог {{total}}руб.</p>
     <a href="{% url 'order_pay' total=total pk=order.pk %}">
         <img src='{% static "mainsite/img/wallet-green.svg" %}' alt="" width="28px" >
     </a>

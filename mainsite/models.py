@@ -125,7 +125,7 @@ class Order(models.Model):
     )
     order_date = models.DateField()
     client = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Клиент")
-    job_list = models.ManyToManyField(Jobtype)
+    job_list = models.ManyToManyField(Jobtype, null=True,blank=True)
     # job = models.ForeignKey(JobPrice, on_delete=models.CASCADE, verbose_name="Работа")
     # parts_price = models.ForeignKey(PartsPrice, on_delete=models.CASCADE, verbose_name="Цена детали")
     status = models.CharField(
@@ -133,7 +133,7 @@ class Order(models.Model):
         choices=status_choice,
         verbose_name="Статус",
     )
-    car = models.ForeignKey(ClientAuto, on_delete=models.CASCADE, verbose_name='Машина клиента')
+    car = models.ForeignKey(ClientAuto, on_delete=models.CASCADE, verbose_name='Машина клиента', null=True,blank=True)
 
     def __str__(self) -> str:
         return "Заказ клиента {}|Статус {}|".format(

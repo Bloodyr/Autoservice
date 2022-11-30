@@ -1,10 +1,21 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
 
 <div class="creation_order_page">
-
-    {% for job in jobs%}
-    <input type="checkbox" value="{{job.job_name}}"> {{job.job_name}}
-    {%endfor%}
+    <form method="POST">
+        <select name="car" >
+            {% if auto.auto.brand  %}
+                <option value="{{auto.id}}" name="car"> {{auto.auto.brand}}</option>
+            {% else %}
+                {% for car in auto %}
+                    <option value="{{car.id}}" name="car">{{car.auto.brand}}</option>
+                {% endfor %}
+            {% endif %}
+        </select>
+        {% for job in jobs%}
+            <input type="checkbox" name="{{job.job_name}}" value="{{job.id}}"> {{job.job_name}}
+        {%endfor%}
+        <input type="submit" value="save">
+    </form>
 </div>
 
 {% endblock %}

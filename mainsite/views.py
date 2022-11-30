@@ -87,7 +87,7 @@ def settings_page(request):
 
 def order_info_page(request):
     orders = Order.objects.filter(client=request.user)
-    context = {'orders':orders}
+    context = {'orders':orders, }
     return render(request, 'mainsite/order_info/order_info.html', context)
 
 def order_detail_page(request, pk):
@@ -146,11 +146,46 @@ def job_details(request, pk):
     job = get_object_or_404(Jobtype, pk=pk)
     context = {'job':job}
     return render(request, 'mainsite/jobs/job_details.html',context)
-    
 
+
+def bill_page(request):
+    order = Order.objects.filter(client=request.user).order_by('id')[0]
+    context = {'order':order}
+    return render(request, 'mainsite/order_info/bill_page.html',context)
+
+    
+@csrf_exempt
 def creation_order_page(request):
     jobs = Jobtype.objects.all()
-    # bill = 
-    auto = ClientAuto.objects.get(client=request.user)
+    auto = ClientAuto.objects.filter(client=request.user)
+
+    if request.method == "POST":
+        order = Order.objects.create(
+            order_date = datetime.date.today(),
+            client = request.user,
+            status = 2,
+            car =  ClientAuto.objects.get(id=request.POST.get("car")) 
+        )
+        for job in jobs:
+            if request.POST.get(job.job_name):
+                order.job_list.add(Jobtype.objects.get(id = request.POST.get(job.job_name))) 
+        return redirect('bill_page')
+            
+
     context = {'jobs': jobs, 'auto':auto}
     return render(request,'mainsite/order_info/creation_order.html',context)
+
+
+def recipe(request, pk):
+    profile = User.objects.get(username=request.user)
+    order = get_object_or_404(Order, pk=pk)
+    total = 0
+    for job in order.job_list.all():
+        total += job.price
+    context = {
+        'order': order, 
+        'profile': profile,
+        'total': total,
+        
+    }    
+    return render(request,'mainsite/order_info/order_billing.html' ,context)

@@ -1,3 +1,26 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
+<div class="order_check">
 
+<h2>Чек об оплате</h2>
+<p>№{{order.id}} {{order.order_date}}</p>
+<div class="order_check_jobs">
+{%for job in order.job_list.all %}
+    <div class="job_check">
+        <div class="job_check_name">
+            <p>{{job.job_name}}</p>
+            <p>{{order.car.auto.brand}}</p>
+            <p>{{order.car.auto.model}}</p>
+        </div>
+        <div class="job_check_price">
+            <p>{{job.price}} руб.</p>
+
+        </div>     
+    </div>
+{%endfor%}
+</div>
+<div class="order_summary">
+    <p>Итог {{total}}руб.</p>
+</div>
+<p>Оплата наличными</p>
+</div>
 {% endblock %}
