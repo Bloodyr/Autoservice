@@ -140,3 +140,21 @@ class Order(models.Model):
     class Meta:
         verbose_name = "Заказ"
         verbose_name_plural = "Заказы"
+    
+
+class PaymentType(models.Model):
+    payment = models.CharField(max_length=100, verbose_name='Тип оплаты')
+
+    def __str__(self) -> str:
+        return self.payment
+    
+
+class Bill(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, verbose_name='Заказ')
+    payment_date = models.DateField(blank=True, null=True, verbose_name='Дата оплаты')
+    mesurable = models.IntegerField(verbose_name='Измерение')
+    payment_type = models.ForeignKey(PaymentType, on_delete=models.CASCADE, verbose_name='Тип оплаты')
+    total = models.IntegerField(verbose_name='Сумма')
+
+    def __str__(self) -> str:
+        return "Дата оплаты|{}|-Сумма|{}|".format(self.payment_date,self.total)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Auto, ClientAuto, Part, Mesurable, PartsPrice, Jobtype, JobPrice, Order
+from .models import Auto, ClientAuto, Part, Mesurable, PartsPrice, Jobtype, JobPrice, Order, Bill
 
 
 # admin.site.register(Client)
@@ -11,3 +11,4 @@ admin.site.register(PartsPrice)
 admin.site.register(Jobtype)
 admin.site.register(JobPrice)
 admin.site.register(Order)
+admin.site.register(Bill)

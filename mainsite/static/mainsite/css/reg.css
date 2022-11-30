@@ -1,0 +1,82 @@
+.body {
+    background-color: rgb(53, 53, 53);
+}
+
+.login_field {
+    text-align: center;
+}
+
+.login_field input {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    width: 250px;
+    height: 50px;
+}
+
+.password_field input {
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    width: 250px;
+    height: 50px;
+}
+
+.password_field {
+    text-align: center;
+}
+
+.login_page p{
+    text-align: center;
+    margin-top: 30px;
+    color: white;
+    font-size: 20px;
+}
+
+.login_btn {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.login_btn input{
+    border-style: solid;
+    width: 250px;
+    height: 50px;
+    border-width: 1px;
+    border-color: black;
+}
+
+
+.registration_page {
+    color: white;
+    font-size: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.registration_page form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.registration_page input {
+    border-style: solid;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: black;
+    width: 250px;
+    height: 50px;
+    margin: 10px;
+}
+
+.registration_page a{
+    text-decoration: none;
+    color: black;
+    margin: 20px;
+}
+
+.registration_btn {
+    color: yellow;
+}

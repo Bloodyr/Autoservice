@@ -1,0 +1,75 @@
+.cars {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    text-align: center;
+}
+
+.cars form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cars_fields {
+    margin-top: 20px;
+}
+
+.cars_fields input{
+    width: 250px;
+    height: 50px;
+}
+
+.cars_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.cars_solo_btn{
+    width: 250px;
+    height: 50px;
+    background-color: green;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+    padding-top: 9px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    margin-left: 63px;
+}
+
+.cars a{
+    text-decoration: none;
+    color: white;
+}
+
+.cars_btn input{
+    background-color: green;
+    width: 250px;
+    height: 50px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    color: white;
+    margin-left: 63px;
+}
+
+
+.auto_detail_car {
+    color: white;
+    margin-top: 20px;
+}
+
+.auto_detail_field {
+    margin-left: 20px;
+    display: flex;
+}
+
+.auto_detail_field p{
+    width: 100px;
+    margin-right: 15px;
+}

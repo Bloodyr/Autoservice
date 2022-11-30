@@ -1,0 +1,48 @@
+.car_list {
+    width: 150px;
+    height: 50px;
+    background-color: rgb(102,102, 102);
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    margin: 15px;
+}
+
+.main_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.main_info p{
+    color: white;
+    font-size: 20px;
+    margin-top: 30px;
+    padding: 15px;
+    margin-bottom: 50px;
+}
+
+
+.buttons {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(102,102, 102);
+}
+
+.buttons img{
+    width: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+}
+
+.blank {
+    width: 100px;
+}

@@ -1,16 +1,33 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-<h1>REG</h1>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.username.label}}
-    {{form.username}}
-    {{form.password1.label}}
-    {{form.password1}}
-    {{form.password2.label}}
-    {{form.password2}}
-    <input type="submit" name="Create User">
-</form>
-<a href="{% url 'login' %}">
-    LOGIN
-</a>
+<div class="registration_page">
+    <p>Чтобы продолжить вам нужно пройти регистрацию</p>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="username_label form_field">
+            <p>Логин</p>
+        </div>
+        <div class="username_field form_field">
+            {{form.username}}
+        </div>
+        <div class="password1_label form_field">
+            {{form.password1.label}}
+        </div>
+        <div class="password1_field form_field">
+            {{form.password1}}
+        </div>
+        <div class="password2_label form_field">
+            {{form.password2.label}}
+        </div>
+        <div class="password2_field form_field">
+            {{form.password2}}
+        </div>
+        <a href="{% url 'login' %}">
+            <p>Войти</p> 
+        </a>
+        <div class="registration_btn">
+            <input  type="submit" name="Create User" value="Зарегистрироваться">
+        </div>
+    </form>
+    
+</div>
 {% endblock %}

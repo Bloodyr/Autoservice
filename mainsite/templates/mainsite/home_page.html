@@ -1,25 +1,40 @@
 {% extends 'mainsite/base.html' %} {% block content %} {% load static %}
-<h1>
-    Test
-</h1>
+<div class="home_page">
+    <div class="header">
+        <div class="blank">
+            
+        </div>
+        <a href="{% url 'cars_page' %}" class="car_list">
+            Машины
+        </a>
+    </div>
+    
+    <div class="main_info">
+        <p class="welcome">Добро пожаловать в приложение "Автосервис"</p>
 
-<a href="{% url 'cars_page' %}">
-    машины
-</a>
-<a href="{% url 'settings_page' %}">
-    Настройки
-</a>
-<a href="{% url 'order_info_page' %}">
-    Информация 
-</a>
-<a href="{% url 'login' %}">
-    Список услуг
-</a>
-<a href="{% url 'login' %}">
-    Оформить заказ
-</a>
-<a href="{% url 'part_list_page' %}">
-    Заказать деталь
-</a>
+        <img src='{% static "/mainsite/img/car1.jpg" %}'' alt="Ведро">
+
+        <p class="add_work">Нажмите на крестик чтобы добавить заказ</p>
+    </div>
+
+
+    <div class="buttons">
+        <a href="{% url 'settings_page' %}">
+            <img src='{% static "/mainsite/img/gear.svg" %}' alt="">
+        </a>
+        <a href="{% url 'order_info_page' %}">
+            <img src='{% static "/mainsite/img/info-circle.svg" %}' alt="">
+        </a>
+        <a href="{% url 'login' %}">
+            <img src='{% static "/mainsite/img/list.svg" %}' alt="">
+        </a>
+        <a href="{% url 'login' %}">
+            <img src='{% static "/mainsite/img/plus.svg" %}' alt="">
+        </a>
+        <a href="{% url 'part_list_page' %}">
+            <img src='{% static "/mainsite/img/stickies.svg" %}' alt="">
+        </a>
+    </div>
+</div>
 {% endblock %}
 
