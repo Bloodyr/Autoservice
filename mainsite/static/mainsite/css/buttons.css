@@ -178,3 +178,56 @@
     margin-left: 38px;
     margin-top: 150px;
 }
+
+.creation_order_page h3{
+    margin-top: 150px;
+    text-align: center;
+}
+
+.creation_order_page form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.creation_order_page_job {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.creation_order_page p{
+    width: 250px;
+    height: 50px;
+    background-color: grey;
+    padding-top: 11px;
+}
+
+.creation_order_page_job input{
+    margin-bottom: 12px;
+    width: 35px;
+}
+
+.creation_order_job_list {
+    margin-top: 100px;
+}
+
+.creation_order_page select{
+    text-align: center;
+    width: 300px;
+    margin-left: 37px;
+}
+
+.creation_order_btn {
+    width: 230px;
+    margin-left: 73px;
+    background-color: green;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    height: 35px;
+}

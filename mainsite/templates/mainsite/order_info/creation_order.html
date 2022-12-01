@@ -2,7 +2,9 @@
 
 <div class="creation_order_page">
     <form method="POST">
-        <select name="car" >
+        <h3>Выбор автомобиля</h3>
+
+        <select name="car" class="car_select_list">
             {% if auto.auto.brand  %}
                 <option value="{{auto.id}}" name="car"> {{auto.auto.brand}}</option>
             {% else %}
@@ -11,10 +13,16 @@
                 {% endfor %}
             {% endif %}
         </select>
-        {% for job in jobs%}
-            <input type="checkbox" name="{{job.job_name}}" value="{{job.id}}"> {{job.job_name}}
-        {%endfor%}
-        <input type="submit" value="save">
+        <div class="creation_order_job_list">
+            {% for job in jobs%}
+                <div class="creation_order_page_job">
+                    <input type="checkbox" name="{{job.job_name}}" value="{{job.id}}"> 
+                    <p>{{job.job_name}}</p>
+                    
+                </div>
+            {%endfor%}
+        </div>
+        <input type="submit" value="Оформить заказ" class="creation_order_btn">
     </form>
 </div>
 
