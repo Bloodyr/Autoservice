@@ -61,6 +61,8 @@ def cars_page(request):
         form = AutoForm(request.POST)
         if form.is_valid :
             form.save()
+            auto = Auto.objects.get(brand=request.POST.get("brand"),model=request.POST.get("model"),gov_number=request.POST.get("gov_number"))
+            ClientAuto.objects.create(client=request.user,auto=auto)
             return redirect('cars_details_page')
     context = {'form':form}
     return render(request, 'mainsite/cars/cars.html', context)

@@ -7,7 +7,7 @@
     <a href="{% url 'order_detail_page' pk=order.pk %}">   
         <img src='{% static "mainsite/img/envelope.svg" %}' alt="lol" width="30px" >
     </a>
-    <p>№{{order.id}} {{order.order_date}}</p>
+    <p style="color: white;">№{{order.id}} {{order.order_date}}</p>
 
 
     {% if order.status == "0" %}
